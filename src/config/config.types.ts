@@ -1,1 +1,4 @@
-export type Config = {}
+export type Config = {
+  menuItemClass: string
+  menuDropClass: string
+}
