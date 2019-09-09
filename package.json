@@ -4,13 +4,14 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "webpack --mode production",
+    "dev": "concurrently \"webpack --mode production\" \"gulp\" ",
     "build": "webpack --mode production",
     "test": "jest"
   },
   "devDependencies": {
     "@types/jest": "^24.0.17",
     "@types/node": "^12.6.9",
+    "concurrently": "^4.1.2",
     "gulp": "^3.9.1",
     "gulp-server-livereload": "^1.9.2",
     "jest": "^24.9.0",
