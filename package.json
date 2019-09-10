@@ -23,5 +23,8 @@
     "webpack-cli": "^3.3.6"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "beedle": "^0.8.1"
+  }
 }
