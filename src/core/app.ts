@@ -1,10 +1,15 @@
-import { makeElementActive } from '../lib/makeElementActive'
-import { removeClassFromElements } from '../lib/removeClassFromElements'
-import { appStore } from '../core/init-application-state'
-import { Config } from '../config/config.types'
+import * as debounce from 'lodash/debounce'
 
+import { getStore } from '../core/init-application-state'
+import { Config } from '../config/config.types'
+import { attachMegaMenuEventListeners } from '../actions/attach-mega-menu-event-listeners'
+
+import { onResize } from '../actions/on-resize'
 export const initApp = (config: Config) => {
-  appStore.subscribe(state => {
+  const store = getStore(config)
+
+  store.subscribe(state => {
+    console.log(`TCL: initApp -> state`, state)
     if (!state.megaMenuActive) {
       return
     }
@@ -13,19 +18,14 @@ export const initApp = (config: Config) => {
       `[class^=${config.menuItemClass}]`
     )
 
-    menuElements.forEach((el: HTMLElement) => {
-      el.addEventListener('mouseenter', event => {
-        removeClassFromElements(menuElements, 'active')
-        makeElementActive(el)
-      })
-
-      el.addEventListener('mouseleave', () => {
-        removeClassFromElements(menuElements, 'active')
-      })
-    })
+    attachMegaMenuEventListeners(menuElements)
+    window.addEventListener(
+      'resize',
+      debounce(() => {
+        onResize(state)
+      }, 300)
+    )
   })
 
-  appStore.dispatch('activateState', '')
+  store.dispatch('activateState', '')
 }
-
-// wrap the entire application to make it listen for changes to state

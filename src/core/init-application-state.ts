@@ -7,15 +7,15 @@ const initialState = {
   megaMenuActive: true
 }
 
-const consolidateConfigIntoState = (config: Config): AppState => {
-  return {
+export const getStore = (config: Config) => {
+  const consolidated = {
     ...config,
     ...initialState
   }
-}
 
-export const appStore = new Store({
-  actions,
-  mutations,
-  initialState: consolidateConfigIntoState(this.config)
-})
+  return new Store({
+    actions,
+    mutations,
+    initialState: consolidated
+  })
+}
