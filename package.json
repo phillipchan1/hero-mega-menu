@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "concurrently \"webpack --mode production\" \"gulp\" ",
+    "dev": "webpack --mode production",
     "build": "webpack --mode production",
     "test": "jest"
   },
