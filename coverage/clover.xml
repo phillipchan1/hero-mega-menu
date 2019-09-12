@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1568322245969" clover="3.2.0">
-  <project timestamp="1568322245969" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1568323239026" clover="3.2.0">
+  <project timestamp="1568323239026" name="All files">
+    <metrics statements="12" coveredstatements="11" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="3" elements="19" coveredelements="17" complexity="0" loc="12" ncloc="12" packages="2" files="3" classes="3"/>
+    <package name="actions">
+      <metrics statements="9" coveredstatements="8" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+      <file name="activate-menu.ts" path="/Users/philchan/Work/hero/hero-mega-menu/src/actions/activate-menu.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+      </file>
+      <file name="on-resize.ts" path="/Users/philchan/Work/hero/hero-mega-menu/src/actions/on-resize.ts">
+        <metrics statements="7" coveredstatements="6" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="is-mobile.ts" path="/Users/philchan/Work/hero/hero-mega-menu/src/lib/is-mobile.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
