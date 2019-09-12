@@ -20,6 +20,7 @@ export const initApp = (config: Config) => {
     )
 
     attachMegaMenuEventListeners(menuElements, state)
+
     window.addEventListener(
       'resize',
       debounce(() => {
