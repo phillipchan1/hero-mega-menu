@@ -10,6 +10,7 @@ export const initApp = (config: Config) => {
 
   store.subscribe(state => {
     console.log(`TCL: initApp -> state`, state)
+
     if (!state.megaMenuActive) {
       return
     }
@@ -18,11 +19,16 @@ export const initApp = (config: Config) => {
       `[class^=${config.menuItemClass}]`
     )
 
-    attachMegaMenuEventListeners(menuElements)
+    attachMegaMenuEventListeners(menuElements, state)
     window.addEventListener(
       'resize',
       debounce(() => {
-        onResize(state)
+        if (window.innerWidth < state.mobileViewport) {
+          console.log('in mobile')
+          store.dispatch('setMegaMenuStatus', false)
+        } else {
+          store.dispatch('setMegaMenuStatus', true)
+        }
       }, 300)
     )
   })

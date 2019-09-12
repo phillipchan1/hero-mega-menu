@@ -1,15 +1,35 @@
-import { makeElementActive } from '../lib/makeElementActive'
+import { activateMenu } from './activate-menu'
 import { removeClassFromElements } from '../lib/removeClassFromElements'
+import { AppState } from '../core/app.state.types'
 
-export const attachMegaMenuEventListeners = (elements: NodeListOf<Element>) => {
+export const attachMegaMenuEventListeners = (
+  elements: NodeListOf<Element>,
+  state: AppState
+): void => {
   elements.forEach((el: HTMLElement) => {
-    el.addEventListener('mouseenter', event => {
-      removeClassFromElements(elements, 'active')
-      makeElementActive(el)
-    })
+    el.addEventListener(
+      'mouseenter',
+      () => {
+        if (!state.megaMenuActive) {
+          return
+        }
 
-    el.addEventListener('mouseleave', () => {
-      removeClassFromElements(elements, 'active')
-    })
+        removeClassFromElements(elements, 'active')
+        activateMenu(el)
+      },
+      true
+    )
+
+    el.addEventListener(
+      'mouseleave',
+      () => {
+        if (!state.megaMenuActive) {
+          return
+        }
+
+        removeClassFromElements(elements, 'active')
+      },
+      true
+    )
   })
 }
