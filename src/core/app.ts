@@ -9,7 +9,9 @@ export const initApp = (config: Config) => {
   const store = getStore(config)
 
   store.subscribe(state => {
-    console.log(`TCL: initApp -> state`, state)
+    if (state.debugMode) {
+      console.log(`TCL: initApp -> state`, state)
+    }
 
     if (!state.megaMenuActive) {
       return
@@ -25,7 +27,9 @@ export const initApp = (config: Config) => {
       'resize',
       debounce(() => {
         if (window.innerWidth < state.mobileViewport) {
-          console.log('in mobile')
+          if (state.debugMode) {
+            console.log('in mobile')
+          }
           store.dispatch('setMegaMenuStatus', false)
         } else {
           store.dispatch('setMegaMenuStatus', true)
