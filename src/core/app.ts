@@ -5,6 +5,8 @@ import { Config } from '../config/config.types'
 import { attachMegaMenuEventListeners } from '../actions/attach-mega-menu-event-listeners'
 
 import { onResize } from '../actions/on-resize'
+import { isMobile } from '../lib/is-mobile'
+
 export const initApp = (config: Config) => {
   const store = getStore(config)
 
@@ -13,7 +15,14 @@ export const initApp = (config: Config) => {
       console.log(`Updated state`, state)
     }
 
-    if (!state.megaMenuActive) {
+    window.addEventListener(
+      'resize',
+      debounce(() => {
+        onResize(state, store)
+      }, 300)
+    )
+
+    if (!state.megaMenuActive || isMobile(state.mobileViewport)) {
       return
     }
 
@@ -22,13 +31,6 @@ export const initApp = (config: Config) => {
     )
 
     attachMegaMenuEventListeners(menuElements, state)
-
-    window.addEventListener(
-      'resize',
-      debounce(() => {
-        onResize(state, store)
-      }, 300)
-    )
   })
 
   store.dispatch('activateState', '')
