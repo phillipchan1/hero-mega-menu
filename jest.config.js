@@ -1,7 +1,8 @@
 module.exports = {
   rootDir: './',
   transform: {
-    '^.+\\.tsx?$': 'ts-jest'
+    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.js?$': 'babel-jest'
   },
   globals: {
     'ts-jest': {

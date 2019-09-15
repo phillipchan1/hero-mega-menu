@@ -1,6 +1,7 @@
 import { activateMenu } from './activate-menu'
 import { removeClassFromElements } from '../lib/removeClassFromElements'
 import { AppState } from '../core/app.state.types'
+import { toggleVisibilityOfNormalMenu } from './toggle-visibility-of-normal-menu'
 
 export const attachMegaMenuEventListeners = (
   elements: NodeListOf<Element>,
@@ -14,6 +15,7 @@ export const attachMegaMenuEventListeners = (
           return
         }
 
+        toggleVisibilityOfNormalMenu(state.overrideMenuClass, false)
         removeClassFromElements(elements, 'active')
         activateMenu(el)
       },
@@ -26,7 +28,7 @@ export const attachMegaMenuEventListeners = (
         if (!state.megaMenuActive) {
           return
         }
-
+        toggleVisibilityOfNormalMenu(state.overrideMenuClass, true)
         removeClassFromElements(elements, 'active')
       },
       true
