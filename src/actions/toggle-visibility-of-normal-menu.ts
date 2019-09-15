@@ -2,11 +2,12 @@ export const toggleVisibilityOfNormalMenu = (
   selector: string,
   visibility: boolean = true
 ): void => {
-  if (!selector) {
+  const normalMenus = document.querySelectorAll(`.${selector}`)
+
+  if (!normalMenus) {
     return
   }
 
-  const normalMenus = document.querySelectorAll('selector')
   const visibilityProperty = visibility ? 'visible' : 'hidden'
 
   normalMenus.forEach((el: HTMLElement) => {

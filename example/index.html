@@ -20,9 +20,19 @@
     <div class="container">
       <nav>
         <li class="mega-drop-1">Mega menu 1</li>
-        <li>Normal Menu</li>
+        <li class="dropdown">
+          Normal Menu
+          <div class="dropdown-content">
+            <p>dropdown normal!</p>
+          </div>
+        </li>
 
-        <li class="mega-drop-2">Mega menu 2</li>
+        <li class="mega-drop-2 dropdown">
+          Mega menu 2
+          <div class="dropdown-content">
+            <p>dropdown normal!</p>
+          </div>
+        </li>
         <li class="mega-drop-3">Mega menu 3</li>
       </nav>
       <aside>
@@ -35,7 +45,8 @@
     <script src="../dist/index.js"></script>
     <script>
       new MegaMenu({
-        debugMode: true
+        debugMode: true,
+        overrideMenuClass: 'dropdown-content'
       })
     </script>
   </body>
