@@ -15,9 +15,9 @@ export const attachMegaMenuEventListeners = (
           return
         }
 
-        toggleVisibilityOfNormalMenu(state.overrideMenuClass, false)
         removeClassFromElements(elements, 'active')
         activateMenu(el)
+        toggleVisibilityOfNormalMenu(state.overrideMenuClass, false)
       },
       true
     )
