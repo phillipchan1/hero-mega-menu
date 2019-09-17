@@ -7,7 +7,7 @@ import { attachMegaMenuEventListeners } from '../actions/attach-mega-menu-event-
 import { onResize } from '../actions/on-resize'
 import { isMobile } from '../lib/is-mobile'
 import { toggleVisibilityOfNormalMenu } from '../actions/toggle-visibility-of-normal-menu'
-import { removeClassFromElements } from '../lib/removeClassFromElements'
+import { removeClassFromElements } from '../lib/remove-class-from-elements'
 
 export const initApp = (config: Config) => {
   const store = getStore(config)
