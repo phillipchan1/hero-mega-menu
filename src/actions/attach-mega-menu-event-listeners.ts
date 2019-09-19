@@ -1,33 +1,32 @@
 import { activateMenu } from './activate-menu'
-import { removeClassFromElements } from '../lib/remove-class-from-elements'
+import { deactivateMenu } from './deactivate-menu'
 import { AppState } from '../core/app.state.types'
-import { toggleVisibilityOfNormalMenu } from './toggle-visibility-of-normal-menu'
 
 export const attachMegaMenuEventListeners = (
   elements: NodeListOf<Element>,
   state: AppState
 ): void => {
-  elements.forEach((el: HTMLElement) => {
-    el.addEventListener(
+  elements.forEach((menuDrop: HTMLElement) => {
+    menuDrop.addEventListener(
       'mouseenter',
       () => {
         if (!state.megaMenuActive) {
           return
         }
 
-        activateMenu(elements, el, state.overrideMenuClass)
+        activateMenu(menuDrop, state.overrideMenuClass, state.menuDropClass)
       },
       true
     )
 
-    el.addEventListener(
+    menuDrop.addEventListener(
       'mouseleave',
       () => {
         if (!state.megaMenuActive) {
           return
         }
-        toggleVisibilityOfNormalMenu(state.overrideMenuClass, true)
-        removeClassFromElements(elements, 'active')
+
+        deactivateMenu(state.overrideMenuClass, state.menuDropClass)
       },
       true
     )
