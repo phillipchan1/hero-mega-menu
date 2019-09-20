@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1568953028719" clover="3.2.0">
-  <project timestamp="1568953028719" name="All files">
-    <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="8" coveredelements="8" complexity="0" loc="6" ncloc="6" packages="1" files="2" classes="2"/>
-    <file name="activate-menu.ts" path="/Users/phillipchan/Work/hero/hero-mega-menu/src/actions/activate-menu.ts">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <line num="4" count="1" type="stmt"/>
-      <line num="6" count="1" type="stmt"/>
-      <line num="10" count="1" type="stmt"/>
-    </file>
+<coverage generated="1568953763165" clover="3.2.0">
+  <project timestamp="1568953763165" name="All files">
+    <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1" elements="8" coveredelements="6" complexity="0" loc="6" ncloc="6" packages="1" files="1" classes="1"/>
     <file name="init.ts" path="/Users/phillipchan/Work/hero/hero-mega-menu/src/actions/init.ts">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="9" count="0" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

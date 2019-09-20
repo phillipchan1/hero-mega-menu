@@ -26,16 +26,16 @@ export const initApp = (config: Config) => {
       }, 300)
     )
 
+    const menuElements = document.querySelectorAll(
+      `[class^=${config.menuItemClass}]`
+    )
+
     if (!state.megaMenuActive || isMobile(state.mobileViewport)) {
       deactivateInit(state.overrideMenuClass, state.menuDropClass)
       return
     }
 
-    init(state.overrideMenuClass)
-
-    const menuElements = document.querySelectorAll(
-      `[class^=${config.menuItemClass}]`
-    )
+    init(config.menuItemClass, state.overrideMenuClass)
 
     attachMegaMenuEventListeners(menuElements, state)
 
