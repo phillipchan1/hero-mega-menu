@@ -1,1 +1,2 @@
-{}
+{"/Users/phillipchan/Work/hero/hero-mega-menu/src/actions/activate-menu.ts": {"path":"/Users/phillipchan/Work/hero/hero-mega-menu/src/actions/activate-menu.ts","statementMap":{"0":{"start":{"line":3,"column":0},"end":{"line":3,"column":67}},"1":{"start":{"line":5,"column":13},"end":{"line":10,"column":null}},"2":{"start":{"line":9,"column":2},"end":{"line":9,"column":null}}},"fnMap":{"0":{"name":"(anonymous_0)","decl":{"start":{"line":5,"column":28},"end":{"line":5,"column":null}},"loc":{"start":{"line":7,"column":23},"end":{"line":10,"column":1}}}},"branchMap":{},"s":{"0":1,"1":1,"2":1},"f":{"0":1},"b":{}}
+}
