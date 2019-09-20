@@ -6,8 +6,9 @@ import { attachMegaMenuEventListeners } from '../actions/attach-mega-menu-event-
 
 import { onResize } from '../actions/on-resize'
 import { isMobile } from '../lib/is-mobile'
-import { toggleVisibilityOfNormalMenu } from '../actions/toggle-visibility-of-normal-menu'
-import { removeClassFromElements } from '../lib/remove-class-from-elements'
+import { deactivateInit } from '../actions/deactivate-init'
+import { init } from '../actions/init'
+import { deactivateMenu } from '../actions/deactivate-menu'
 
 export const initApp = (config: Config) => {
   const store = getStore(config)
@@ -26,8 +27,11 @@ export const initApp = (config: Config) => {
     )
 
     if (!state.megaMenuActive || isMobile(state.mobileViewport)) {
+      deactivateInit(state.overrideMenuClass, state.menuDropClass)
       return
     }
+
+    init(state.overrideMenuClass)
 
     const menuElements = document.querySelectorAll(
       `[class^=${config.menuItemClass}]`
@@ -37,8 +41,7 @@ export const initApp = (config: Config) => {
 
     // deactivate mega menu on scroll
     window.addEventListener('scroll', () => {
-      toggleVisibilityOfNormalMenu(state.overrideMenuClass, true)
-      removeClassFromElements(menuElements, 'active')
+      deactivateMenu(state.menuDropClass)
     })
   })
 

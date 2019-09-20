@@ -8,6 +8,7 @@ export const activateRespectiveMenu = (
   const respectiveMenuDropClass = `.${menuDropClass}-${numberOfMenuDrop} .${menuDropClass}`
 
   const menu = document.querySelector(respectiveMenuDropClass)
+
   if (!menu) {
     return
   }

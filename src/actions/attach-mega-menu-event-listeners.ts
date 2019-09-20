@@ -13,8 +13,7 @@ export const attachMegaMenuEventListeners = (
         if (!state.megaMenuActive) {
           return
         }
-
-        activateMenu(menuDrop, state.overrideMenuClass, state.menuDropClass)
+        activateMenu(menuDrop, state.menuDropClass)
       },
       true
     )
@@ -26,7 +25,7 @@ export const attachMegaMenuEventListeners = (
           return
         }
 
-        deactivateMenu(state.overrideMenuClass, state.menuDropClass)
+        deactivateMenu(state.menuDropClass)
       },
       true
     )

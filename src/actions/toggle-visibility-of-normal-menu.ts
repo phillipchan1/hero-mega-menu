@@ -8,9 +8,9 @@ export const toggleVisibilityOfNormalMenu = (
     return
   }
 
-  const visibilityProperty = visibility ? 'visible' : 'hidden'
+  const displayProperty = visibility ? '' : 'none'
 
   normalMenus.forEach((el: HTMLElement) => {
-    el.style.visibility = visibilityProperty
+    el.style.display = displayProperty
   })
 }

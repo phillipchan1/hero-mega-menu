@@ -5,10 +5,7 @@ import { activateRespectiveMenu } from './activate-respective-menu'
 
 export const activateMenu = (
   menuDrop: HTMLElement,
-  overrideMenuClass: string,
   menuDropClass: string
 ): void => {
-  toggleVisibilityOfNormalMenu(overrideMenuClass, false)
-
   activateRespectiveMenu(menuDrop, menuDropClass)
 }
