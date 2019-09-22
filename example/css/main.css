@@ -16,3 +16,25 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+nav.menu {
+  display: flex;
+  flex-direction: row;
+}
+
+section.mega-menu {
+  background: #cecece;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 40px;
+}
+
+section.mega-menu > div > div {
+  padding: 5em;
+  display: none;
+}
+
+section.mega-menu > div > div.active {
+  display: block;
+}
