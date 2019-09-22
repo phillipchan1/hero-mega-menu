@@ -13,6 +13,7 @@ export const attachMegaMenuEventListeners = (
         if (!state.megaMenuActive) {
           return
         }
+
         activateMenu(menuDrop, state.menuDropClass)
       },
       true
