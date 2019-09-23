@@ -6,5 +6,11 @@ export const activateMenu = (
   menuDrop: HTMLElement,
   menuDropClass: string
 ): void => {
+  document
+    .querySelectorAll(`.${menuDropClass}`)
+    .forEach((menuDrop: HTMLElement) => {
+      menuDrop.classList.remove('active')
+    })
+
   activateRespectiveMenu(menuDrop, menuDropClass)
 }

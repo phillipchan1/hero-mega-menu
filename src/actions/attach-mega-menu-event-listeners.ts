@@ -1,27 +1,36 @@
 import { activateMenu } from './activate-menu'
 import { deactivateMenu } from './deactivate-menu'
 import { AppState } from '../core/app.state.types'
+import { getNumberFromClassName } from '../lib/get-number-from-class-name'
+import { deactivateInit } from './deactivate-init'
 
 export const attachMegaMenuEventListeners = (
-  elements: NodeListOf<Element>,
+  menuItems: NodeListOf<Element>,
+  menuDrops: NodeListOf<Element>,
   state: AppState
 ): void => {
-  elements.forEach((menuDrop: HTMLElement) => {
-    menuDrop.addEventListener(
+  menuItems.forEach((menuItem: HTMLElement) => {
+    const menuItemClassName = menuItem.className
+    const sequenceOfElement = getNumberFromClassName(menuItemClassName)
+    console.log('TCL: sequenceOfElement', sequenceOfElement)
+
+    menuItem.addEventListener(
       'mouseenter',
       () => {
         if (!state.megaMenuActive) {
           return
         }
 
-        activateMenu(menuDrop, state.menuDropClass)
+        activateMenu(menuItem, state.menuDropClass)
       },
       true
     )
 
-    menuDrop.addEventListener(
+    menuItem.addEventListener(
       'mouseleave',
-      () => {
+      originalEvent => {
+        const originalElement = originalEvent.target as HTMLElement
+
         if (!state.megaMenuActive) {
           return
         }

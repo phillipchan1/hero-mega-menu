@@ -22,17 +22,23 @@ nav.menu {
   flex-direction: row;
 }
 
-section.mega-menu {
-  background: #cecece;
-  width: 100%;
-  position: fixed;
-  left: 0;
-  top: 40px;
-}
-
 section.mega-menu > div > div {
   padding: 5em;
   display: none;
+}
+
+.mega-menu {
+  display: none;
+  background: #cecece;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 50px;
+  padding: 3em;
+}
+
+.mega-menu.active {
+  display: block;
 }
 
 section.mega-menu > div > div.active {

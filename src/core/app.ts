@@ -30,14 +30,18 @@ export const initApp = (config: Config) => {
       `[class^=${config.menuItemClass}]`
     )
 
+    const megaDropElements = document.querySelectorAll(
+      `.${state.menuDropClass}`
+    )
+
     if (!state.megaMenuActive || isMobile(state.mobileViewport)) {
       deactivateInit(state.overrideMenuClass, state.menuDropClass)
       return
     }
 
-    init(config.menuItemClass, state.overrideMenuClass)
+    init(config.menuItemClass, state.overrideMenuClass, state.menuDropClass)
 
-    attachMegaMenuEventListeners(menuElements, state)
+    attachMegaMenuEventListeners(menuElements, megaDropElements, state)
 
     // deactivate mega menu on scroll
     window.addEventListener('scroll', () => {
