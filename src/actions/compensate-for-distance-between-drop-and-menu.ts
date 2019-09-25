@@ -14,12 +14,7 @@ export const compensateForDistanceBetweenDropAndMenu = (
   const distanceOfTopofMenuItemToTopOfPage = menuDropClientReact.top
 
   const distanceBetweenMenuItemAndDrop =
-    distanceOfTopofMenuItemToTopOfPage - distanceOfBottomOfMenuDropsToTopOfPage
-
-  // only if there's a gap proceed
-  // if (distanceBetweenMenuItemAndDrop <= 0) {
-  //   return
-  // }
+    distanceOfBottomOfMenuDropsToTopOfPage - distanceOfTopofMenuItemToTopOfPage
 
   console.log('adding styles')
 
@@ -29,11 +24,12 @@ export const compensateForDistanceBetweenDropAndMenu = (
     }
 
     [class^=${menuItemClass}]::after {
-        left: 0;
         content: '';
+        height: ${distanceBetweenMenuItemAndDrop}px;
+        left: 0;
         position: absolute;
+        top: 100%;
         width: 100%;
-        height: 50px;
     }
 
     [class^=${menuItemClass}]:hover .${menuDropClass} {
