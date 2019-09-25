@@ -19,10 +19,13 @@ export const init = (
 
     respectiveDropdown.style.display = 'none'
 
-    const megaMenu = document
-      .querySelector(`.${menuDropClass}-${i + 1}`)
-      .cloneNode(true)
-    menuItem.appendChild(megaMenu)
+    // clone mega menu and place it underneath
+    const megaMenu = document.querySelector(`.${menuDropClass}-${i + 1}`)
+    megaMenu.parentNode.removeChild(megaMenu)
+
+    const megaMenuClone = megaMenu.cloneNode(true)
+
+    menuItem.appendChild(megaMenuClone)
   })
 
   // compensate for distance between menu drop and menu

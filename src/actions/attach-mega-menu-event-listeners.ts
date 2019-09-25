@@ -12,7 +12,6 @@ export const attachMegaMenuEventListeners = (
   menuItems.forEach((menuItem: HTMLElement) => {
     const menuItemClassName = menuItem.className
     const sequenceOfElement = getNumberFromClassName(menuItemClassName)
-    console.log('TCL: sequenceOfElement', sequenceOfElement)
 
     menuItem.addEventListener(
       'mouseenter',
@@ -28,9 +27,7 @@ export const attachMegaMenuEventListeners = (
 
     menuItem.addEventListener(
       'mouseleave',
-      originalEvent => {
-        const originalElement = originalEvent.target as HTMLElement
-
+      event => {
         if (!state.megaMenuActive) {
           return
         }
