@@ -41,7 +41,7 @@ export const initApp = (config: Config) => {
 
     init(config.menuItemClass, state.overrideMenuClass, state.menuDropClass)
 
-    attachMegaMenuEventListeners(menuElements, megaDropElements, state)
+    // attachMegaMenuEventListeners(menuElements, megaDropElements, state)
 
     // deactivate mega menu on scroll
     window.addEventListener('scroll', () => {
