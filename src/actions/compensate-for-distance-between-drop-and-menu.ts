@@ -35,6 +35,12 @@ export const compensateForDistanceBetweenDropAndMenu = (
         width: 100%;
         height: 50px;
     }
+
+    [class^=${menuItemClass}]:hover .${menuDropClass} {
+        display: block !important;
+        visibility: visible;
+        opacity: 1
+    }
   </style>
   `
 
