@@ -16,8 +16,6 @@ export const compensateForDistanceBetweenDropAndMenu = (
   const distanceBetweenMenuItemAndDrop =
     distanceOfBottomOfMenuDropsToTopOfPage - distanceOfTopofMenuItemToTopOfPage
 
-  console.log('adding styles')
-
   const styles = `<style>
     [class^=${menuItemClass}] {
         position: relative

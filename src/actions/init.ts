@@ -21,6 +21,10 @@ export const init = (
 
     // clone mega menu and place it underneath
     const megaMenu = document.querySelector(`.${menuDropClass}-${i + 1}`)
+
+    if (!megaMenu) {
+      return
+    }
     megaMenu.parentNode.removeChild(megaMenu)
 
     const megaMenuClone = megaMenu.cloneNode(true)
