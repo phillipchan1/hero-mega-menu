@@ -29,7 +29,7 @@ export const init = (
 
     const megaMenuClone = megaMenu.cloneNode(true)
 
-    menuItem.appendChild(megaMenuClone)
+    megaMenu.innerHTML += megaMenuClone
   })
 
   // compensate for distance between menu drop and menu
