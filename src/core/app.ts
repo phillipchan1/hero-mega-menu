@@ -39,7 +39,12 @@ export const initApp = (config: Config) => {
       return
     }
 
-    init(config.menuItemClass, state.overrideMenuClass, state.menuDropClass)
+    init(
+      config.menuItemClass,
+      state.overrideMenuClass,
+      state.overrideMenuParentClass,
+      state.menuDropClass
+    )
 
     // attachMegaMenuEventListeners(menuElements, megaDropElements, state)
 

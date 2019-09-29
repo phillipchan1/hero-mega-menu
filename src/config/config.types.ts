@@ -7,4 +7,5 @@ export type Config = {
   menuDropClass: string
   mobileViewport: number
   overrideMenuClass: string
+  overrideMenuParentClass: string
 }

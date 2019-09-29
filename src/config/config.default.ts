@@ -5,5 +5,6 @@ export const defaultConfig: Config = {
   menuItemClass: 'mega-drop',
   menuDropClass: 'mega-menu',
   mobileViewport: 768,
-  overrideMenuClass: 'hs-menu-children-wrapper'
+  overrideMenuClass: 'hs-menu-children-wrapper',
+  overrideMenuParentClass: 'hs-menu-item'
 }

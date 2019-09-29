@@ -1,18 +1,27 @@
 import { getSiblings } from '../lib/get-siblings-of-element'
+import { getClosestParent } from '../lib/get-closest-parent'
 import { compensateForDistanceBetweenDropAndMenu } from './compensate-for-distance-between-drop-and-menu'
 
 export const init = (
   menuItemClass: string,
   overrideMenuClass: string,
+  overrideMenuParentClass: string,
   menuDropClass: string
 ) => {
   const menuItems = document.querySelectorAll(`[class^=${menuItemClass}]`)
 
   //  hide override menu
   menuItems.forEach((menuItem: HTMLElement, i: number) => {
-    const parent = menuItem.parentElement
+    const closestOverrideParentMenu = getClosestParent(
+      menuItem,
+      `.${overrideMenuParentClass}`
+    )
 
-    const respectiveDropdown: HTMLElement = menuItem.querySelector(
+    if (!closestOverrideParentMenu) {
+      return
+    }
+
+    const respectiveDropdown: HTMLElement = closestOverrideParentMenu.querySelector(
       `.${overrideMenuClass}`
     )
 
