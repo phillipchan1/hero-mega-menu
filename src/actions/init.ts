@@ -11,11 +11,10 @@ export const init = (
   //  hide override menu
   menuItems.forEach((menuItem: HTMLElement, i: number) => {
     const parent = menuItem.parentElement
-    const siblings = getSiblings(parent)
 
-    const respectiveDropdown = siblings.find((el: HTMLElement) => {
-      return el.className === overrideMenuClass
-    })
+    const respectiveDropdown: HTMLElement = menuItem.querySelector(
+      `.${overrideMenuClass}`
+    )
 
     if (respectiveDropdown) {
       respectiveDropdown.style.display = 'none'
@@ -28,10 +27,7 @@ export const init = (
       return
     }
 
-    // megaMenu.parentNode.removeChild(megaMenu)
-
     const megaMenuClone = megaMenu.cloneNode(true)
-    console.log(`TCL: megaMenuClone`, megaMenuClone)
 
     menuItem.append(megaMenuClone)
   })
