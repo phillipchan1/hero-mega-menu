@@ -1,6 +1,6 @@
 {
   "name": "hero-mega-menu",
-  "version": "1.4.11",
+  "version": "1.4.12",
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
