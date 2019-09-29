@@ -26,9 +26,10 @@ export const init = (
       return
     }
 
-    megaMenu.parentNode.removeChild(megaMenu)
+    // megaMenu.parentNode.removeChild(megaMenu)
 
     const megaMenuClone = megaMenu.cloneNode(true)
+    console.log(`TCL: megaMenuClone`, megaMenuClone)
 
     menuItem.append(megaMenuClone)
   })
