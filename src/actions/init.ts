@@ -17,7 +17,9 @@ export const init = (
       return el.className === overrideMenuClass
     })
 
-    respectiveDropdown.style.display = 'none'
+    if (respectiveDropdown) {
+      respectiveDropdown.style.display = 'none'
+    }
 
     // clone mega menu and place it underneath
     const megaMenu = document.querySelector(`.${menuDropClass}-${i + 1}`)
