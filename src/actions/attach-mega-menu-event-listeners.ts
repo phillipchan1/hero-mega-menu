@@ -1,17 +1,21 @@
-import { activateMenu } from './activate-menu'
-import { deactivateMenu } from './deactivate-menu'
 import { AppState } from '../core/app.state.types'
-import { getNumberFromClassName } from '../lib/get-number-from-class-name'
-import { deactivateInit } from './deactivate-init'
+import { addBridgeBetweenDropAndMenu } from './add-bridge-between-drop-and-menu'
+import { removeBridgeBetweenDropAndMenu } from './remove-bridge-between-drop-and-menu'
+import { getVerticalDistanceBetweenTwoElements } from '../lib/get-vertical-distance-between-two-elements'
 
 export const attachMegaMenuEventListeners = (
   menuItems: NodeListOf<Element>,
-  menuDrops: NodeListOf<Element>,
   state: AppState
 ): void => {
+  const menuDrops = document.querySelectorAll(`.${state.menuDropClass}`)
+
+  const distanceBetweenMenuItemAndDrop = getVerticalDistanceBetweenTwoElements(
+    menuItems[0],
+    menuDrops[0]
+  )
+
   menuItems.forEach((menuItem: HTMLElement) => {
     const menuItemClassName = menuItem.className
-    const sequenceOfElement = getNumberFromClassName(menuItemClassName)
 
     menuItem.addEventListener(
       'mouseenter',
@@ -20,7 +24,11 @@ export const attachMegaMenuEventListeners = (
           return
         }
 
-        activateMenu(menuItem, state.menuDropClass)
+        addBridgeBetweenDropAndMenu(
+          state.menuDropClass,
+          distanceBetweenMenuItemAndDrop,
+          state.menuItemClass
+        )
       },
       true
     )
@@ -32,7 +40,7 @@ export const attachMegaMenuEventListeners = (
           return
         }
 
-        deactivateMenu(state.menuDropClass)
+        removeBridgeBetweenDropAndMenu()
       },
       true
     )

@@ -1,6 +1,6 @@
-import { getSiblings } from '../lib/get-siblings-of-element'
 import { getClosestParent } from '../lib/get-closest-parent'
-import { compensateForDistanceBetweenDropAndMenu } from './compensate-for-distance-between-drop-and-menu'
+import { addBridgeBetweenDropAndMenu } from './add-bridge-between-drop-and-menu'
+import { attachMegaMenuEventListeners } from '../actions/attach-mega-menu-event-listeners'
 
 export const init = (
   menuItemClass: string,
@@ -41,10 +41,21 @@ export const init = (
     menuItem.append(megaMenuClone)
   })
 
-  // compensate for distance between menu drop and menu
-  compensateForDistanceBetweenDropAndMenu(
-    menuDropClass,
-    menuItems,
-    menuItemClass
-  )
+  // add styles that will make this work
+  const styles = `<style>
+    [class^=${menuItemClass}] {
+        position: relative
+    }
+
+
+    [class^=${menuItemClass}]:hover .${menuDropClass} {
+        display: block !important;
+        visibility: visible;
+        opacity: 1
+    }
+  </style>
+  `
+
+  const head = document.querySelector('head')
+  head.innerHTML += styles
 }
