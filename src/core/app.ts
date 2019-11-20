@@ -17,9 +17,14 @@ export const initApp = (config: Config) => {
 		`[class^=${config.menuItemClass}]`
 	)
 
-	console.log(`TCL: initApp -> menuElements`, menuElements)
+	const menuDrops = document.querySelectorAll(`.${config.menuDropClass}`)
 
-	if (!menuElements) {
+	if (config.debugMode) {
+		console.log(`TCL: initApp -> menuDrops`, menuDrops)
+		console.log(`TCL: initApp -> menuElements`, menuElements)
+	}
+
+	if (!menuElements || !menuDrops) {
 		return
 	}
 
