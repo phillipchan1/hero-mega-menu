@@ -11,44 +11,52 @@ import { init } from '../actions/init'
 import { deactivateMenu } from '../actions/deactivate-menu'
 
 export const initApp = (config: Config) => {
-  const store = getStore(config)
+	const store = getStore(config)
 
-  store.subscribe(state => {
-    if (state.debugMode) {
-      console.log(`Updated state`, state)
-    }
+	store.subscribe(state => {
+		if (state.debugMode) {
+			console.log(`Updated state`, state)
+		}
 
-    // determine whether it should be active on mobile or not
-    window.addEventListener(
-      'resize',
-      debounce(() => {
-        onResize(state, store)
-      }, 300)
-    )
+		const menuElements = document.querySelectorAll(
+			`[class^=${config.menuItemClass}]`
+		)
 
-    const menuElements = document.querySelectorAll(
-      `[class^=${config.menuItemClass}]`
-    )
+		if (state.debugMode) {
+			console.log(`TCL: initApp -> menuElements`, menuElements)
+		}
 
-    if (!state.megaMenuActive || isMobile(state.mobileViewport)) {
-      deactivateInit(state.overrideMenuClass, state.menuDropClass)
-      return
-    }
+		if (!menuElements) {
+			return
+		}
 
-    init(
-      config.menuItemClass,
-      state.overrideMenuClass,
-      state.overrideMenuParentClass,
-      state.menuDropClass
-    )
+		// determine whether it should be active on mobile or not
+		window.addEventListener(
+			'resize',
+			debounce(() => {
+				onResize(state, store)
+			}, 300)
+		)
 
-    attachMegaMenuEventListeners(menuElements, state)
+		if (!state.megaMenuActive || isMobile(state.mobileViewport)) {
+			deactivateInit(state.overrideMenuClass, state.menuDropClass)
+			return
+		}
 
-    // deactivate mega menu on scroll
-    window.addEventListener('scroll', () => {
-      deactivateMenu(state.menuDropClass)
-    })
-  })
+		init(
+			config.menuItemClass,
+			state.overrideMenuClass,
+			state.overrideMenuParentClass,
+			state.menuDropClass
+		)
 
-  store.dispatch('activateState', '')
+		attachMegaMenuEventListeners(menuElements, state)
+
+		// deactivate mega menu on scroll
+		window.addEventListener('scroll', () => {
+			deactivateMenu(state.menuDropClass)
+		})
+	})
+
+	store.dispatch('activateState', '')
 }
