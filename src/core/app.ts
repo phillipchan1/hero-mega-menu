@@ -9,6 +9,7 @@ import { isMobile } from '../lib/is-mobile'
 import { deactivateInit } from '../actions/deactivate-init'
 import { init } from '../actions/init'
 import { deactivateMenu } from '../actions/deactivate-menu'
+import _ from 'lodash'
 
 export const initApp = (config: Config) => {
 	const store = getStore(config)
@@ -24,7 +25,7 @@ export const initApp = (config: Config) => {
 		console.log(`TCL: initApp -> menuElements`, menuElements)
 	}
 
-	if (!menuElements || !menuDrops) {
+	if (!_.isEmpty(menuElements) || !_.isEmpty(menuDrops)) {
 		return
 	}
 
