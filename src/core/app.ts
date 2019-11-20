@@ -13,17 +13,15 @@ import { deactivateMenu } from '../actions/deactivate-menu'
 export const initApp = (config: Config) => {
 	const store = getStore(config)
 
+	const menuElements = document.querySelectorAll(
+		`[class^=${config.menuItemClass}]`
+	)
+
+	console.log(`TCL: initApp -> menuElements`, menuElements)
+
 	store.subscribe(state => {
 		if (state.debugMode) {
 			console.log(`Updated state`, state)
-		}
-
-		const menuElements = document.querySelectorAll(
-			`[class^=${config.menuItemClass}]`
-		)
-
-		if (state.debugMode) {
-			console.log(`TCL: initApp -> menuElements`, menuElements)
 		}
 
 		if (!menuElements) {
