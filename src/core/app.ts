@@ -9,7 +9,7 @@ import { isMobile } from '../lib/is-mobile'
 import { deactivateInit } from '../actions/deactivate-init'
 import { init } from '../actions/init'
 import { deactivateMenu } from '../actions/deactivate-menu'
-import _ from 'lodash'
+import * as _ from 'lodash'
 
 export const initApp = (config: Config) => {
 	const store = getStore(config)
