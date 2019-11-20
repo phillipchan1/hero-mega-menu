@@ -19,13 +19,13 @@ export const initApp = (config: Config) => {
 
 	console.log(`TCL: initApp -> menuElements`, menuElements)
 
+	if (!menuElements) {
+		return
+	}
+
 	store.subscribe(state => {
 		if (state.debugMode) {
 			console.log(`Updated state`, state)
-		}
-
-		if (!menuElements) {
-			return
 		}
 
 		// determine whether it should be active on mobile or not
