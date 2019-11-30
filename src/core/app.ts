@@ -26,6 +26,11 @@ export const initApp = (config: Config) => {
 	}
 
 	if (!_.isEmpty(menuElements) || !_.isEmpty(menuDrops)) {
+		if (config.debugMode) {
+			console.log(
+				'No active menu elements or drops: cancelling initiation of menu'
+			)
+		}
 		return
 	}
 
