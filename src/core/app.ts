@@ -25,7 +25,7 @@ export const initApp = (config: Config) => {
 		console.log(`TCL: initApp -> menuElements`, menuElements)
 	}
 
-	if (!_.isEmpty(menuElements) || !_.isEmpty(menuDrops)) {
+	if (_.isEmpty(menuElements) || _.isEmpty(menuDrops)) {
 		if (config.debugMode) {
 			console.log(
 				'No active menu elements or drops: cancelling initiation of menu'
