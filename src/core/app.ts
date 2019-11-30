@@ -34,6 +34,10 @@ export const initApp = (config: Config) => {
 		return
 	}
 
+	if (config.debugMode) {
+		console.log('Menu drop and element present: initiating mega menu')
+	}
+
 	store.subscribe(state => {
 		if (state.debugMode) {
 			console.log(`Updated state`, state)
