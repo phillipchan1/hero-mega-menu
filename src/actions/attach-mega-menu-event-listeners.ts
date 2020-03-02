@@ -1,13 +1,12 @@
-import { AppState } from '../core/app.state.types'
 import { addBridgeBetweenDropAndMenu } from './add-bridge-between-drop-and-menu'
 import { removeBridgeBetweenDropAndMenu } from './remove-bridge-between-drop-and-menu'
 import { getVerticalDistanceBetweenTwoElements } from '../lib/get-vertical-distance-between-two-elements'
 
 export const attachMegaMenuEventListeners = (
   menuItems: NodeListOf<Element>,
-  state: AppState
+  config: any
 ): void => {
-  const menuDrops = document.querySelectorAll(`.${state.menuDropClass}`)
+  const menuDrops = document.querySelectorAll(`.${config.menuDropClass}`)
 
   const distanceBetweenMenuItemAndDrop = getVerticalDistanceBetweenTwoElements(
     menuItems[0],
@@ -20,14 +19,10 @@ export const attachMegaMenuEventListeners = (
     menuItem.addEventListener(
       'mouseenter',
       () => {
-        if (!state.megaMenuActive) {
-          return
-        }
-
         addBridgeBetweenDropAndMenu(
-          state.menuDropClass,
+          config.menuDropClass,
           distanceBetweenMenuItemAndDrop,
-          state.menuItemClass
+          config.menuItemClass
         )
       },
       true
@@ -36,10 +31,6 @@ export const attachMegaMenuEventListeners = (
     menuItem.addEventListener(
       'mouseleave',
       event => {
-        if (!state.megaMenuActive) {
-          return
-        }
-
         removeBridgeBetweenDropAndMenu()
       },
       true

@@ -12,64 +12,66 @@ import { deactivateMenu } from '../actions/deactivate-menu'
 import * as _ from 'lodash'
 
 export const initApp = (config: Config) => {
-	const store = getStore(config)
+  const store = getStore(config)
 
-	const menuElements = document.querySelectorAll(
-		`[class^=${config.menuItemClass}]`
-	)
+  const menuElements = document.querySelectorAll(
+    `[class^=${config.menuItemClass}]`
+  )
 
-	const menuDrops = document.querySelectorAll(`.${config.menuDropClass}`)
+  const menuDrops = document.querySelectorAll(`.${config.menuDropClass}`)
 
-	if (config.debugMode) {
-		console.log(`TCL: initApp -> menuDrops`, menuDrops)
-		console.log(`TCL: initApp -> menuElements`, menuElements)
-	}
+  if (config.debugMode) {
+    console.log(`TCL: initApp -> menuDrops`, menuDrops)
+    console.log(`TCL: initApp -> menuElements`, menuElements)
+  }
 
-	if (_.isEmpty(menuElements) || _.isEmpty(menuDrops)) {
-		if (config.debugMode) {
-			console.log(
-				'No active menu elements or drops: cancelling initiation of menu'
-			)
-		}
-		return
-	}
+  if (_.isEmpty(menuElements) || _.isEmpty(menuDrops)) {
+    if (config.debugMode) {
+      console.log(
+        'No active menu elements or drops: cancelling initiation of menu'
+      )
+    }
+    return
+  }
 
-	if (config.debugMode) {
-		console.log('Menu drop and element present: initiating mega menu')
-	}
+  if (config.debugMode) {
+    console.log('Menu drop and element present: initiating mega menu')
+  }
 
-	store.subscribe(state => {
-		if (state.debugMode) {
-			console.log(`Updated state`, state)
-		}
+  init(
+    config.menuItemClass,
+    config.overrideMenuClass,
+    config.overrideMenuParentClass,
+    config.menuDropClass
+  )
 
-		// determine whether it should be active on mobile or not
-		window.addEventListener(
-			'resize',
-			debounce(() => {
-				onResize(state, store)
-			}, 300)
-		)
+  attachMegaMenuEventListeners(menuElements, config)
 
-		if (!state.megaMenuActive || isMobile(state.mobileViewport)) {
-			deactivateInit(state.overrideMenuClass, state.menuDropClass)
-			return
-		}
+  store.subscribe(state => {
+    if (state.debugMode) {
+      console.log(`Updated state`, state)
+    }
 
-		init(
-			config.menuItemClass,
-			state.overrideMenuClass,
-			state.overrideMenuParentClass,
-			state.menuDropClass
-		)
+    // determine whether it should be active on mobile or not
 
-		attachMegaMenuEventListeners(menuElements, state)
+    if (!state.megaMenuActive || isMobile(state.mobileViewport)) {
+      console.log('deactivating')
+      deactivateInit(config, menuElements)
+      return
+    }
 
-		// deactivate mega menu on scroll
-		window.addEventListener('scroll', () => {
-			deactivateMenu(state.menuDropClass)
-		})
-	})
+    window.addEventListener(
+      'resize',
+      debounce(() => {
+        onResize(state, store)
+      }, 300)
+    )
 
-	store.dispatch('activateState', '')
+    // deactivate mega menu on scroll
+    window.addEventListener('scroll', () => {
+      deactivateMenu(state.menuDropClass)
+    })
+  })
+
+  store.dispatch('activateState', '')
 }
