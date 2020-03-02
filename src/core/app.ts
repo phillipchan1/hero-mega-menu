@@ -1,3 +1,4 @@
+import * as _ from 'lodash'
 import * as debounce from 'lodash/debounce'
 
 import { getStore } from '../core/init-application-state'
@@ -6,10 +7,10 @@ import { attachMegaMenuEventListeners } from '../actions/attach-mega-menu-event-
 
 import { onResize } from '../actions/on-resize'
 import { isMobile } from '../lib/is-mobile'
-import { deactivateMegaMenu } from '../actions/deactivate-init'
+import { deactivateMegaMenu } from '../actions/deativate-mega-menu'
 import { init } from '../actions/init'
-import { deactivateMenu } from '../actions/deactivate-menu'
-import * as _ from 'lodash'
+import { toggleMenuHover } from '../actions/toggle-menu-hover'
+import { activateMegaMenu } from '../actions/activate-mega-menu'
 
 export const initApp = (config: Config) => {
   const store = getStore(config)
@@ -53,12 +54,13 @@ export const initApp = (config: Config) => {
     }
 
     // determine whether it should be active on mobile or not
-
     if (!state.megaMenuActive || isMobile(state.mobileViewport)) {
       console.log('deactivating')
-      deactivateMegaMenu(config, menuElements)
+      deactivateMegaMenu(config)
       return
     } else {
+      console.log('activating')
+      activateMegaMenu(config)
     }
 
     window.addEventListener(
@@ -70,7 +72,7 @@ export const initApp = (config: Config) => {
 
     // deactivate mega menu on scroll
     window.addEventListener('scroll', () => {
-      deactivateMenu(state.menuDropClass)
+      // toggleMenuHover(config.menuDropClass, config.menuItemClass, false)
     })
   })
 

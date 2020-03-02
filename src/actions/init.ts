@@ -1,6 +1,5 @@
 import { getClosestParent } from '../lib/get-closest-parent'
-import { addBridgeBetweenDropAndMenu } from './add-bridge-between-drop-and-menu'
-import { attachMegaMenuEventListeners } from '../actions/attach-mega-menu-event-listeners'
+import { toggleMenuHover } from '../actions/toggle-menu-hover'
 
 export const init = (
   menuItemClass: string,
@@ -41,21 +40,5 @@ export const init = (
     menuItem.append(megaMenuClone)
   })
 
-  // add styles that will make this work
-  const styles = `<style>
-    [class^=${menuItemClass}] {
-        position: relative
-    }
-
-
-    [class^=${menuItemClass}]:hover .${menuDropClass} {
-        display: block !important;
-        visibility: visible;
-        opacity: 1
-    }
-  </style>
-  `
-
-  const head = document.querySelector('head')
-  head.innerHTML += styles
+  toggleMenuHover(menuDropClass, menuItemClass, true)
 }

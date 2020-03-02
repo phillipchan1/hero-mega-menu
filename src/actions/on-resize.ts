@@ -1,5 +1,5 @@
 import { isMobile } from '../lib/is-mobile'
-import { deactivateMegaMenu } from './deactivate-init'
+import { deactivateMegaMenu } from './deativate-mega-menu'
 
 export const onResize = (state, store) => {
   if (isMobile(state.mobileViewport)) {
@@ -7,7 +7,7 @@ export const onResize = (state, store) => {
       console.log('in mobile')
     }
 
-    deactivateMegaMenu(state.overrideMenuClass, state.menuDropClass)
+    deactivateMegaMenu(state)
     store.dispatch('setMegaMenuStatus', false)
 
     return
