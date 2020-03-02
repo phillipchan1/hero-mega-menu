@@ -6,7 +6,7 @@ import { attachMegaMenuEventListeners } from '../actions/attach-mega-menu-event-
 
 import { onResize } from '../actions/on-resize'
 import { isMobile } from '../lib/is-mobile'
-import { deactivateInit } from '../actions/deactivate-init'
+import { deactivateMegaMenu } from '../actions/deactivate-init'
 import { init } from '../actions/init'
 import { deactivateMenu } from '../actions/deactivate-menu'
 import * as _ from 'lodash'
@@ -56,8 +56,9 @@ export const initApp = (config: Config) => {
 
     if (!state.megaMenuActive || isMobile(state.mobileViewport)) {
       console.log('deactivating')
-      deactivateInit(config, menuElements)
+      deactivateMegaMenu(config, menuElements)
       return
+    } else {
     }
 
     window.addEventListener(
