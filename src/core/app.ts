@@ -55,11 +55,15 @@ export const initApp = (config: Config) => {
 
     // determine whether it should be active on mobile or not
     if (!state.megaMenuActive || isMobile(state.mobileViewport)) {
-      console.log('deactivating')
+      if (state.debugMode) {
+        console.log('deactivating')
+      }
       deactivateMegaMenu(config)
       return
     } else {
-      console.log('activating')
+      if (state.debugMode) {
+        console.log('activating')
+      }
       activateMegaMenu(config)
     }
 
@@ -71,10 +75,6 @@ export const initApp = (config: Config) => {
     )
 
     // deactivate mega menu on scroll
-    window.addEventListener('scroll', () => {
-      // toggleMenuHover(config.menuDropClass, config.menuItemClass, false)
-    })
+    window.addEventListener('scroll', () => {})
   })
-
-  store.dispatch('activateState', '')
 }
