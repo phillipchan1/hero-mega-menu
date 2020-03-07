@@ -13,12 +13,20 @@ export const attachMegaMenuEventListeners = (
     menuDrops[0]
   )
 
+  window.addEventListener('scroll', () => {
+    menuItems.forEach((menuItem: HTMLElement) => {
+      menuItem.classList.remove('active')
+    })
+  })
+
   menuItems.forEach((menuItem: HTMLElement) => {
     const menuItemClassName = menuItem.className
 
     menuItem.addEventListener(
       'mouseenter',
       () => {
+        menuItem.classList.add('active')
+
         addBridgeBetweenDropAndMenu(
           config.menuDropClass,
           distanceBetweenMenuItemAndDrop,
@@ -31,6 +39,7 @@ export const attachMegaMenuEventListeners = (
     menuItem.addEventListener(
       'mouseleave',
       event => {
+        menuItem.classList.remove('active')
         removeBridgeBetweenDropAndMenu()
       },
       true

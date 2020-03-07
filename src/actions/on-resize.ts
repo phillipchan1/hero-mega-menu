@@ -1,19 +1,19 @@
 import { isMobile } from '../lib/is-mobile'
 import { deactivateMegaMenu } from './deativate-mega-menu'
 
-export const onResize = (state, store) => {
-  if (isMobile(state.mobileViewport)) {
-    if (state.debugMode) {
+export const onResize = (config, store) => {
+  if (isMobile(config.mobileViewport)) {
+    if (config.debugMode) {
       console.log('in mobile')
     }
 
-    deactivateMegaMenu(state)
+    deactivateMegaMenu(config)
     store.dispatch('setMegaMenuStatus', false)
 
     return
   }
 
-  if (state.debugMode) {
+  if (config.debugMode) {
     console.log('Desktop, setting to active')
   }
 

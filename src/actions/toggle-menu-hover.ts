@@ -7,11 +7,11 @@ const createStyleForMenuHover = (
   return `
   <div id='${styleBlockClassId}'>
     <style>
-      [class^=${menuItemClass}] {
+      .${menuItemClass}.active {
           position: relative;
       }
 
-      [class^=${menuItemClass}]:hover .${menuDropClass} {
+      .${menuItemClass}.active:hover .${menuDropClass} {
           display: block !important;
           visibility: visible;
           opacity: 1

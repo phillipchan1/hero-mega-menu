@@ -9,7 +9,6 @@ import { onResize } from '../actions/on-resize'
 import { isMobile } from '../lib/is-mobile'
 import { deactivateMegaMenu } from '../actions/deativate-mega-menu'
 import { init } from '../actions/init'
-import { toggleMenuHover } from '../actions/toggle-menu-hover'
 import { activateMegaMenu } from '../actions/activate-mega-menu'
 
 export const initApp = (config: Config) => {
@@ -66,15 +65,14 @@ export const initApp = (config: Config) => {
       }
       activateMegaMenu(config)
     }
-
-    window.addEventListener(
-      'resize',
-      debounce(() => {
-        onResize(state, store)
-      }, 300)
-    )
-
-    // deactivate mega menu on scroll
-    window.addEventListener('scroll', () => {})
   })
+
+  window.addEventListener(
+    'resize',
+    debounce(() => {
+      onResize(config, store)
+    }, 300)
+  )
+
+  store.dispatch('activateState', '')
 }
