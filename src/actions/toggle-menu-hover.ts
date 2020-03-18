@@ -16,6 +16,10 @@ const createStyleForMenuHover = (
           visibility: visible;
           opacity: 1
       }
+
+      .${menuItemClass}:hover {
+        cursor: pointer;
+      }
     </style>
   </div>
   `
